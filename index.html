@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=100vw, initial-scale=1.0" />
+    <title>Ludo Sample</title>
+
+    <style>
+      .disable {
+        background-color: gray;
+      }
+
+      .color1 {
+        background-color: red;
+      }
+      .color2 {
+        background-color: green;
+      }
+      .color3 {
+        background-color: blue;
+      }
+      .color4 {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-2">
+      <button v-on:click="move">Move</button>
+      <div style="display: flex;">
+        <div>
+          <span v-for="yindex in y">
+            <div style="display: flex;">
+              <span v-for="index in x">
+                <div
+                  v-bind:id="[index,yindex]"
+                  v-bind:rel="[index,yindex]"
+                  style="width: 50px; height: 50px; border: 1px solid;"
+                  v-bind:class="[{ color1 : (yindex < 6 && index < 6)} , 
+                  {color2: index > 8 && index <= 13 && yindex<6},
+                  {color3: index<6&&yindex>8 && yindex<=15},
+                  {color4:index >= 9 && yindex >= 9},
+                  {index}
+                  ]"
+                >
+                  <div>
+                    x:{{index}} y:{{yindex}}
+                  </div>
+                </div>
+              </span>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
