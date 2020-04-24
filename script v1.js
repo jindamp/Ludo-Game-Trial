@@ -1,10 +1,9 @@
 var app2 = new Vue({
   el: "#app-2",
   mounted: function () {
-    var parent = this;
     this.operator;
-
     this.corners();
+    var parent = this;
     var i = 0;
 
     loop();
@@ -77,35 +76,47 @@ var app2 = new Vue({
       // is in home ...
       var homeArr = [66, 67, 68, 77, 78, 79, 86, 87, 88];
       var pos = this.startx + ":" + this.startY;
-
       console.log(pos);
       switch (pos) {
-        case "1:8":
-        case "6:13":
-        case "6:6": // y--
+        case "1:8": // y--
           this.operator = this.yminus;
           this.printxyCorners();
           break;
-
-        case "1:6":
-        case "6:1":
-        case "8:6": // x++
+        case "1:6": // x++
           this.operator = this.xplus;
           this.printxyCorners();
           break;
-
-        case "8:1":
-        case "13:6":
+        case "6:1": // x++
+          this.printxyCorners();
+          this.operator = this.xplus;
+          break;
+        case "8:1": // y++
+          this.operator = this.yplus;
+          break;
+        case "13:6": // y++
+          this.operator = this.yplus;
+          break;
+        case "13:8": // x--
+          this.operator = this.xminus;
+          break;
+        case "6:13": // y--
+          this.operator = this.yminus;
+          break;
+        case "8:13": // x--
+          this.operator = this.xminus;
+          break;
+        case "6:6": // y++
+          this.operator = this.yminus;
+          break;
+        case "8:6": // y++
+          this.operator = this.xplus;
+          break;
         case "8:8": // y++
           this.operator = this.yplus;
           break;
-
-        case "13:8":
-        case "8:13":
         case "6:8": // x--
           this.operator = this.xminus;
           break;
-
         case "1:7":
           var startIndex = document.querySelectorAll('[rel="0"]')[0].id;
           if (startIndex == "13,7") {
@@ -151,10 +162,9 @@ var app2 = new Vue({
   data: {
     x: 13,
     y: 13,
-    startx: 6,
-    startY: 12,
+    startx: 13,
+    startY: 8,
     count: 0,
-    startPos: "2:6",
     operator: "test",
   },
 });
